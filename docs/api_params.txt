@@ -1,0 +1,36 @@
+
+
+
+# get application/json data
+class BodyData(BaseModel):
+    name: str
+    age: int
+
+    
+@app.get("/body-data")
+def get_post_data(data: BodyData):
+    return data
+
+# get query parameters
+class QueryParams(BaseModel):
+    q: str
+    limit: int
+
+    
+@app.get("/query-params")
+def get_post_data(params: QueryParams = Depends()):
+    return params
+
+
+
+# get specific header (user_agent) -> must be as a same name in a header
+from fastapi import Header
+
+@app.get("/header")
+def get_post_data(user_agent: str | None = Header(default=None)):
+    return {"User-Agent": user_agent}
+
+
+@app.get("/headers")
+def get_post_data(request: Request):
+    return {"headers": request.headers}
