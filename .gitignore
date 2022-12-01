@@ -2,3 +2,4 @@ __pycache__
 venv
 .env
 requirements_local.txt
+.idea/

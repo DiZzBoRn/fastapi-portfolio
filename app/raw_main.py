@@ -1,38 +1,29 @@
-from fastapi import FastAPI, status, HTTPException, Response, Depends, Body
-from pydantic import BaseModel
-from typing import Optional, Union, List
-from random import randrange
-from . import utils
-import psycopg2
-from psycopg2.extras import RealDictCursor
-import time
-from . import models, schemas
-from .database import get_db, engine
-from sqlalchemy.orm import Session
-from sqlalchemy.exc import IntegrityError
+from fastapi import FastAPI
+
+from app import models
+from app.database import engine
+
 # while True:
-    # try:
-    #     conn = psycopg2.connect(
-    #             host="localhost", 
-    #             port=5433,
-    #             database="fastapi_local", 
-    #             user="postgres", 
-    #             password="1118",
-    #             cursor_factory=RealDictCursor
-    #             )
-    #     cursor = conn.cursor()
-    #     print('Database connection was successfully')
-    #     break
-    # except Exception as ex:
-        # print('Connecting to database failed')
-        # print('Error: ', ex)
-        # time.sleep(3)
+# try:
+#     conn = psycopg2.connect(
+#             host="localhost",
+#             port=5433,
+#             database="fastapi_local",
+#             user="postgres",
+#             password="1118",
+#             cursor_factory=RealDictCursor
+#             )
+#     cursor = conn.cursor()
+#     print('Database connection was successfully')
+#     break
+# except Exception as ex:
+# print('Connecting to database failed')
+# print('Error: ', ex)
+# time.sleep(3)
 
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-
-
 
 # @app.get("/posts")
 # def get_posts():
