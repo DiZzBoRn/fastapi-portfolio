@@ -3,3 +3,5 @@ venv
 .env
 requirements_local.txt
 .idea/
+tests/test_calculations.py
+app/calculations.py
